@@ -1,0 +1,499 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Avux">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&amp;display=swap"
+        rel="stylesheet">
+    <meta name="description"
+        content="Mager mau nulis di kertas ? Mending pakai MagerNulis kak. MagerNulis merupakan website nulis otomatis bagi kalian kaum rebahan yg mager nulis dikertas">
+    <meta name="page_type" content="np-template-header-footer-from-plugin">
+    <meta name="theme-color" content="#9e9e9e">
+    <meta name="author" content="AVUX#0001">
+
+    <meta property="og:title" content="Mager Nulis | Tugas Auto Kelar">
+    <meta property="og:type" content="website">
+    <meta property="og:description"
+        content="Mager mau nulis di kertas ? Mending pakai MagerNulis kak. MagerNulis merupakan website nulis otomatis bagi kalian kaum rebahan yg mager nulis dikertas">
+    <meta property="og:url" content="index.html">
+    <meta property="og:site_name" content="Mager Nulis | Tugas Auto Kelar">
+    <meta property="og:image" itemprop="image"
+        content="https://cdn.discordapp.com/attachments/972016247795515454/994242841985417266/20220706_203058.png?size=200">
+
+    <link rel="icon" type="image/png"
+        href="https://cdn.discordapp.com/attachments/972016247795515454/994242841985417266/20220706_203058.png?size=200">
+
+    <meta name="google-site-verification" content="ALfXDLJKrkuFQJx4XxgSpUIf6BAQTUGhHIjtwc9NE6E" />
+
+    <title>MagerNulis | Auto Nulis Tugas</title>
+    <!--
+  
+  -->
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
+
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <link rel="stylesheet" href="assets/css/owl-carousel.css">
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5266209259181992"
+        crossorigin="anonymous"></script>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Light & Dark Theme */
+
+        .dark-mode {
+            background-color: #414147;
+            color: white;
+        }
+
+        .light-mode {
+            background-color: white;
+            color: black;
+        }
+
+        @font-face {
+            font-family: HandwritingCR-2;
+            src: url(/fonts/HandwritingCR-2.ttf);
+        }
+
+        @media only screen and (max-width: 1140px) {
+            .welcome-area {
+                margin-bottom: 50px;
+            }
+        }
+    </style>
+</head>
+
+<body onload="darkMode()">
+
+    <!-- ***** Welcome Area Start ***** -->
+    <div class="welcome-area" id="welcome">
+        <div class="header-text">
+            <div class="container">
+                <div class="row">
+                    <div class="left-text col-lg-6 col-md-12 col-sm-12 col-xs-12"
+                        data-scroll-reveal="enter left move 30px over 0.6s after 0.4s" data-scroll-reveal-id="1"
+                        data-scroll-reveal-initialized="true" data-scroll-reveal-complete="true">
+                        <h1><span style="color: #3b3b3b; text-shadow: 1px 1px 2px #fff;">Mager</span> <em
+                                style="text-shadow: 1px 1px 2px #3b3b3b;">Nulis</em></h1>
+                        <p>&nbsp;&nbsp;&nbsp;Mager mau nulis di kertas ?
+                            Mending pakai MagerNulis kak.
+                            MagerNulis merupakan website nulis otomatis bagi kalian kaum rebahan yg mager nulis
+                            dikertas.<br>
+                            &nbsp;&nbsp;&nbsp;Privasi data anda dijamin aman karena kami tidak menggunakan database.
+                            Semua foto yang selesai di generate tidak akan kami simpan.</p>
+                        <a href="#nugas" class="main-button" style="cursor: pointer;">Mulai Nugas</a>
+                        <button class="main-button" style="color: white; cursor: pointer;" onclick="darkMode()"><i class="fas fa-moon"
+                                id="darkmodebtn"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ***** Header Text End ***** -->
+    </div>
+    <!-- ***** Welcome Area End ***** -->
+
+    <div class="left-image-decor"></div>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
+    <script>
+        let bg, font, margin, gap, fontsize = 16;
+        let txtDate = '',
+            txtClass = '',
+            txtAbsen = '',
+            txtName = '',
+            txtContent = '';
+
+        let books = [{
+            'index': 0,
+            'name': 'Folio 1',
+            'file': 'folio.jpg'
+        },
+        {
+            'index': 1,
+            'name': 'Folio 2',
+            'file': 'folio2.png'
+        },
+        {
+            'index': 2,
+            'name': 'HVS 1',
+            'file': 'hvs.jpg'
+        },
+        {
+            'index': 3,
+            'name': 'HVS 2',
+            'file': 'hvs2.png'
+        },
+        ];
+
+        let fonts = [{
+            'index': 0,
+            'name': 'HandwritingCR 2',
+            'file': 'HandwritingCR-2.ttf'
+        },
+        {
+            'index': 1,
+            'name': 'Gloria Hallelujah',
+            'file': 'GloriaHallelujah-Regular.ttf'
+        },
+        {
+            'index': 2,
+            'name': 'James Fajardo',
+            'file': 'James_Fajardo.ttf'
+        },
+        {
+            'index': 3,
+            'name': 'MyHandsHoldingYou',
+            'file': 'MyHandsareHoldingYou.ttf'
+        },
+        {
+            'index': 4,
+            'name': 'Shadows Into Light',
+            'file': 'ShadowsIntoLight-Regular.ttf'
+        },
+        {
+            'index': 5,
+            'name': 'Heart Warming',
+            'file': 'HeartWarming.otf'
+        },
+        {
+            'index': 6,
+            'name': 'Noona Land',
+            'file': 'NoonaLand.ttf'
+        },
+        {
+            'index': 7,
+            'name': 'Yasuragi',
+            'file': 'Yasuragi.otf'
+        },
+        {
+            'index': 8,
+            'name': 'Nihilschiz',
+            'file': 'NihilschizHandwriting.ttf'
+        },
+        {
+            'index': 9,
+            'name': 'Note This',
+            'file': 'Notethis.ttf'
+        },
+        {
+            'index': 10,
+            'name': 'Gilles',
+            'file': 'Gilles_Handwriting.ttf'
+        },
+        ];
+
+        let getFontIndex = () => {
+            let fontIndex = localStorage.getItem('fontIndex');
+            if (fontIndex) {
+                return fonts[fontIndex];
+            }
+            return fonts[0];
+        }
+
+        let getBookIndex = () => {
+            let bookIndex = localStorage.getItem('bookIndex');
+            if (bookIndex) {
+                return books[bookIndex];
+            }
+            return books[0];
+        }
+
+        // canvas
+        function preload() {
+
+        }
+
+        function setup() {
+            // ukuran asli gambar 300x441
+            createCanvas(300 * 2, 447 * 2);
+            bg = loadImage('/img/' + getBookIndex().file);
+            font = loadFont('/fonts/' + getFontIndex().file);
+
+            textFont(font);
+            textSize(fontsize);
+        }
+
+        function draw() {
+            // fix_dpi();
+            background(bg);
+            margin = 10;
+            fill(0, 0, 0, 200);
+            translate(margin - 8, margin * 4);
+            text(txtName, 15, 0);
+            text(txtAbsen, 15, 20);
+            text(txtClass, 15, 40);
+            text(txtDate, 450, 40);
+            translate(0, margin + 7);
+
+            text(txtContent, 15, 50, 580 /*, 800 */);
+        }
+
+        document.addEventListener('DOMContentLoaded', (e) => {
+            let fontSelectEl = document.getElementById('font');
+            let fontSelectOptionTemplate = (index, name) => {
+                let _selected = (index == getFontIndex().index) ? 'selected' : '';
+                return `<option value="${index}" ${_selected}>${name}</option>`;
+            }
+            let _temp = '';
+            fonts.forEach((font, index) => {
+                _temp += fontSelectOptionTemplate(index, font.name);
+            });
+            fontSelectEl.innerHTML = _temp;
+        });
+
+        document.addEventListener('DOMContentLoaded', (e) => {
+            let bookSelectEl = document.getElementById('book');
+            let bookSelectOptionTemplate = (index, name) => {
+                let _selected = (index == getBookIndex().index) ? 'selected' : '';
+                return `<option value="${index}" ${_selected}>${name}</option>`;
+            }
+            let _temp = '';
+            books.forEach((book, index) => {
+                _temp += bookSelectOptionTemplate(index, book.name);
+            });
+            bookSelectEl.innerHTML = _temp;
+        });
+    </script>
+    <script>
+        function downloadCanvas(c, filename) {
+            var lnk = document.createElement('a'),
+                e;
+            lnk.download = filename;
+            lnk.href = c.toDataURL();
+            if (document.createEvent) {
+                e = document.createEvent("MouseEvents");
+                e.initMouseEvent("click", true, true, window,
+                    0, 0, 0, 0, 0, false, false, false,
+                    false, 0, null);
+                lnk.dispatchEvent(e);
+            } else if (lnk.fireEvent) {
+                lnk.fireEvent("onclick");
+            }
+        }
+
+        function fix_dpi() {
+            let canvas = document.getElementById('defaultCanvas0');
+            let dpi = window.devicePixelRatio;
+            let style = {
+                height() {
+                    return +getComputedStyle(canvas).getPropertyValue('height').slice(0, -2);
+                },
+                width() {
+                    return +getComputedStyle(canvas).getPropertyValue('width').slice(0, -2);
+                }
+            }
+            canvas.setAttribute('width', style.width() * dpi);
+            canvas.setAttribute('height', style.height() * dpi);
+        }
+    </script>
+    <!-- ***** Start Nugas ***** -->
+    <section class="section" id="nugas">
+        <div class="container">
+            <div class="row">
+
+                <!-- ***** Start Setting ***** -->
+                <div class="col-lg-6 col-md-12 col-sm-12">
+                    <div class="contact-form">
+                        <div class="card-body">
+                            <div class="form-group">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="font">Pilih Font :</label>
+                                    <select class="form-control" id="font"
+                                        onchange="localStorage.setItem('fontIndex', this.value);setup()"></select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="font">Pilih Kertas :</label>
+                                    <select class="form-control" id="book"
+                                        onchange="localStorage.setItem('bookIndex', this.value);setup()"></select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="date">Hari / Tanggal :</label>
+                                    <input type="text" class="form-control" id="date" oninput="txtDate = this.value">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="name">Nama :</label>
+                                    <input type="text" class="form-control" id="name" oninput="txtName = this.value">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="absen">Absen / NIM :</label>
+                                    <input type="text" class="form-control" id="class" oninput="txtAbsen = this.value">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="class">Kelas :</label>
+                                    <input type="text" class="form-control" id="class" oninput="txtClass = this.value">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="comment">Ketik Tugas :</label>
+                                <textarea class="form-control" id="content" rows="10"
+                                    oninput="txtContent = this.value"></textarea>
+                            </div>
+
+
+                        </div>
+                        <div class="form-group">
+
+                            <button class="main-button"
+                                onclick="downloadCanvas(document.getElementById('defaultCanvas0'), 'MagerNulis.png')">Download</button>
+                            <!-- <a href="https://trakteer.id/avux/tip" class="main-button-slider">SEDEKAH</a> <br><br> -->
+                            <button id="start" class="main-button">VOICE RECORD</button>
+                            <!-- <button id="hapus" class="main-button">CLEAR</button> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12">
+
+
+                    <main class="paper-container"></main>
+
+
+                </div>
+                <!-- ***** End Setting ***** -->
+            </div>
+        </div>
+    </section>
+    <!-- ***** End Nugas ***** -->
+
+    <div class="right-image-decor"></div>
+
+
+    <!-- ***** Footer Start ***** -->
+    <footer id="contact-us">
+        <div class="container">
+            <div class="footer-content">
+                <div class="row">
+                    <!-- ***** Contact Form Start ***** -->
+                    <div class="col-lg-6 col-md-12 col-sm-12">
+                        <iframe width="100%"
+                            src="https://widget.trakteer.id/top-supporter-default.html?key=trstream-7iJlg6pl7HsJHg9xD81X&ts_count=5&ts_theme=default&ts_interval=90&ts_customtitle=Supporter+Mager+Nulis&ts_customsubtitle=Terima+Kasih+Sudah+Membelikan+Secangkir+Kopi+-+Top+Donator"
+                            frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <!-- ***** Contact Form End ***** -->
+                    <div class="right-content col-lg-6 col-md-12 col-sm-12">
+                        <h2>About MagerNulis</h2>
+                        <p>&nbsp;&nbsp;Mager mau nulis di kertas? Mending pakai MagerNulis kak. MagerNulis merupakan
+                            website nulis otomatis bagi kalian kaum rebahan yg mager nulis dikertas. Apabila kakak
+                            mempunyai saran font untuk layanan kami , bisa langsung contact kami
+                            <br><br>Alamat &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <a
+                                href="https://goo.gl/maps/vf7mhsFWfj9W8QLz6"><u>Sarirogo, Sidoarjo, Jawa Timur,
+                                    Indonesia</u></a> <br>
+                            Whatsapp : <a href="https://wa.me/+6281393889505"><u>+62 813-9388-9505</u></a> <br>
+                            Instagram : <a rel="nofollow" href="https://instagram.com/d.avux"
+                                target="_blank"><u>@d.avux</u></a><br><br>
+                            <script type='text/javascript' src='https://cdn.trakteer.id/js/embed/trbtn.min.js'></script>
+                            <script type='text/javascript'>
+                                (function () {
+                                    var trbtnId = trbtn.init('Donasi Secangkir Kopi', '#3b3b3b',
+                                        'https://trakteer.id/avuxdemons/tip',
+                                        'https://trakteer.id/images/mix/coffee.png', '40');
+                                    trbtn.draw(trbtnId);
+                                })();
+                            </script>
+                        </p>
+                        <ul class="social">
+                            <li><a href="https://youtube.com/Avuxx" target="_blank"
+                                    class="d-flex justify-content-center align-items-center"><i
+                                        class="fa fa-youtube"></i></a></li>
+                            <li><a href="https://instagram.com/d.avux" target="_blank"
+                                    class="d-flex justify-content-center align-items-center"><i
+                                        class="fa fa-instagram"></i></a></li>
+                            <li><a href="https://wa.me/+6281393889505" target="_blank"
+                                    class="d-flex justify-content-center align-items-center"><i
+                                        class="fa fa-whatsapp"></i></a></li>
+                            <li><a href="https://tiktok.com/@avux_" target="_blank"
+                                    class="d-flex justify-content-center align-items-center"><i
+                                        class="fab fa-tiktok"></i></a></li>
+                            <li><a href="https://github.com/avuxdemons" target="_blank"
+                                    class="d-flex justify-content-center align-items-center"><i
+                                        class="fab fa-github"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="sub-footer">
+                        <p class="love">Remake with ❤ by <a rel="nofollow" href="https://avux.xyz"
+                                target="_parent"><b><u>Λvux</u></b></a> | Original <a rel="nofollow" href="https://github.com/0xSyam/Tulisno"
+                                target="_parent"><b><u>Tulisno</u></b></a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("a").on('click', function (event) {
+                if (this.hash !== "") {
+                    event.preventDefault();
+                    var hash = this.hash;
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top
+                    }, 500, function () {
+                        window.location.hash = hash;
+                    });
+                }
+            });
+        });
+    </script>
+
+    <!-- jQuery -->
+    <script src="assets/js/jquery-2.1.0.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="assets/js/popper.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+
+    <!-- Plugins -->
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/scrollreveal.min.js"></script>
+    <script src="assets/js/waypoints.min.js"></script>
+    <script src="assets/js/jquery.counterup.min.js"></script>
+    <script src="assets/js/imgfix.min.js"></script>
+    <script src="https://kit.fontawesome.com/c15b744a04.js" crossorigin="anonymous"></script>
+
+    <!-- Global Init -->
+    <script src="assets/js/custom.js"></script>
+    <script src="assets/js/voicerecord.js"></script>
+
+    <!-- Light & Dark Theme -->
+    <script>
+        let dark = false;
+        var element = document.body;
+        var darkmodebtn = document.getElementById('darkmodebtn');
+
+        function darkMode() {
+            if (dark == false) {
+
+                dark = true;
+                element.className = "dark-mode";
+                darkmodebtn.className = 'fas fa-sun'
+
+            } else {
+
+                dark = false;
+                element.className = "light-mode";
+                darkmodebtn.className = 'fas fa-moon';
+
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
